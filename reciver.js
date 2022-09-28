@@ -32,15 +32,13 @@ client.on('message', function (topic, message) {
   console.log("message: ", message.toString());
 });
 
-// client/mcu01,
-// client/mcu02,
 
 setInterval(() => {
   // Sender Message
   client.publish("server/mcu01", 
   `{
-      "sensor": "kuy",
-      "status": "80"
+      "sensor": "Louis",
+      "status": "123"
   }`, { qos: 0, retain: false }, (error) => {
       if (error) {
         console.error(error)
@@ -48,6 +46,8 @@ setInterval(() => {
   })
 
 }, 5000);
+// client/mcu01,
+// client/mcu02,
 
 setInterval(() => {
   // sender Message
@@ -62,7 +62,7 @@ setInterval(() => {
       }
     }
   );
-}, 1000);
+}, 5000);
 
 setInterval(() => {
   // sender Message
@@ -77,7 +77,7 @@ setInterval(() => {
       }
     }
   );
-}, 2000);
+}, 5000);
 
 setInterval(() => {
     // sender Message
@@ -92,4 +92,4 @@ setInterval(() => {
         }
       }
     );
-  }, 2000);
+  }, 5000);

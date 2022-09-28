@@ -45,28 +45,14 @@ client.on('message', function (topic, message) {
 //  client/mcu01,
 //  client/mcu02
 
-// setInterval(() => {
-//     // sender Message
-//     // client.publish("receiver-01", "hello from sender-01");
-//     client.subscribe(
-//       "server/#",
-//       `hello from ${MQTT_USER}`,
-//       { qos: 0, retain: false },
-//       (error) => {
-//         if (error) {
-//           console.error(error)
-//         }
-//       }
-//     );
-//   }, 1000);
-
 setInterval(() => {
     // Sender Message
     client.publish("client/mcu01", 
     `{
-        "sensor": "A",
-        "status": "off"
-    }`, { qos: 0, retain: false }, (error) => {
+        "sensor": "AA",
+        "status": "OOFF"
+    }`
+    , { qos: 0, retain: false }, (error) => {
         if (error) {
           console.error(error)
         }
@@ -87,9 +73,8 @@ setInterval(() => {
         }
     })
 
-}, 2000);
-///kuy
-///511
+}, 5000);
+
 
 setInterval(() => {
     // Sender Message
@@ -104,4 +89,4 @@ setInterval(() => {
         }
     })
 
-}, 2000);
+}, 5000);
