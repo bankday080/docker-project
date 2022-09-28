@@ -1,9 +1,9 @@
 var mqtt = require('mqtt');
-const MQTT_SERVER = "127.0.0.1";
+const MQTT_SERVER = "54.191.199.50";
 const MQTT_PORT = "1883";
 //if your sercer dont have username and password let blank
-const MQTT_USER = "client";
-const MQTT_PASSWORD = "client";
+const MQTT_USER = "phusit";
+const MQTT_PASSWORD = "Password123#@!";
 const MQTT_SUB = ["client/mcu01"];
 
 // conmect MQTT
@@ -62,7 +62,7 @@ setInterval(() => {
       }
     }
   );
-}, 1000);
+}, 5000);
 
 setInterval(() => {
   // sender Message
@@ -77,7 +77,7 @@ setInterval(() => {
       }
     }
   );
-}, 2000);
+}, 5000);
 
 setInterval(() => {
     // sender Message
@@ -92,4 +92,4 @@ setInterval(() => {
         }
       }
     );
-  }, 2000);
+  }, 5000);

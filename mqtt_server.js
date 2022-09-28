@@ -1,9 +1,9 @@
 var mqtt = require('mqtt');
-const MQTT_SERVER = "127.0.0.1";
+const MQTT_SERVER = "54.191.199.50";
 const MQTT_PORT = "1883";
 //if your server don't have username and password let blank.
-const MQTT_USER = "server"; 
-const MQTT_PASSWORD = "server";
+const MQTT_USER = "phusit"; 
+const MQTT_PASSWORD = "Password123#@!";
 const MQTT_SUB = ["server/#"]
 
 // Connect MQTT
@@ -25,40 +25,22 @@ client.on('connect', function () {
     });
 });
 
-
-
-// Receive Message and print on terminal
-client.on('message', function (topic, message) {
-    // message is Buffer
-    // console.log("topic : ", topic)
-    if(topic === "server/mcu01" ){
-        console.log("is server/mcu01 ....")
-        var payload = JSON.parse(message.toString())
-        console.log(payload)
-    } else{
-        console.log("is server/mcu02 ....")
-        var payload = JSON.parse(message.toString())
-        console.log(payload)
-    }
+client.on('connect', function () {
+    // Subscribe any topic
+    console.log("MQTT Connect");
+    client.subscribe('server/mcu01', function (err) {
+    console.log
+        if (err) {
+            console.log(err);
+        }
+    });
 });
 
-//  client/mcu01,
-//  client/mcu02
+client.on('message', function (topic, message) {
+    // message is Buffer
+    console.log(message.toString());
+});
 
-// setInterval(() => {
-//     // sender Message
-//     // client.publish("receiver-01", "hello from sender-01");
-//     client.subscribe(
-//       "server/#",
-//       `hello from ${MQTT_USER}`,
-//       { qos: 0, retain: false },
-//       (error) => {
-//         if (error) {
-//           console.error(error)
-//         }
-//       }
-//     );
-//   }, 1000);
 
 setInterval(() => {
     // Sender Message
@@ -87,7 +69,7 @@ setInterval(() => {
         }
     })
 
-}, 2000);
+}, 5000);
 ///kuy
 ///511
 
@@ -104,4 +86,4 @@ setInterval(() => {
         }
     })
 
-}, 2000);
+}, 5000);
