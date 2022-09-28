@@ -41,7 +41,6 @@ client.on('message', function (topic, message) {
     console.log(message.toString());
 });
 
-
 setInterval(() => {
     // Sender Message
     client.publish("client/mcu01", 
