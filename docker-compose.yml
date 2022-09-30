@@ -1,0 +1,42 @@
+version: '3.7'
+
+services:
+    mosquitto:
+        image: cedalo/mosquitto:streams
+        container_name: mosquitto
+        ports:
+            - 1883:1883
+            - 9002:9001
+        expose:
+            - 1883
+            - 9002
+        # volumes:
+        #   - ./data:/mosquitto/data
+        #   - ./conf:/mosquitto/config
+        networks:
+            - mosquitto
+    management-center:
+        image: cedalo/management-center:dev
+        container_name: management-center
+        environment:
+            # Do not change these settings for the moment!
+            CEDALO_MC_BROKER_ID: mosquitto-2.0
+            CEDALO_MC_BROKER_NAME: Mosquitto 2.0
+            CEDALO_MC_BROKER_URL: mqtt://mosquitto:1883
+            CEDALO_MC_BROKER_USERNAME: cedalo
+            CEDALO_MC_BROKER_PASSWORD: eAkX29UnAs
+            CEDALO_MC_PROXY_CONFIG_DIR: /management-center/config/config.json
+        ports:
+            - 8088:8088
+        expose:
+            - 8088
+        depends_on:
+            - mosquitto
+        # volumes:
+        #     - ./config:/management-center/backend/config
+        networks:
+            - mosquitto
+networks:
+    mosquitto:
+        name: mosquitto
+        driver: bridge
