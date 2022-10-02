@@ -1,21 +1,31 @@
 {
   "name": "docker-project",
   "version": "1.0.0",
-  "description": "",
   "main": "reciver.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node server.js"
+    "start": "node server1.js",
+    "dev": "nodemon server1.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.0",
     "express": "^4.18.1",
     "fastify": "^4.6.0",
     "mqtt": "^4.3.7"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bankday080/docker-project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bankday080/docker-project/issues"
+  },
+  "homepage": "https://github.com/bankday080/docker-project#readme",
+  "description": ""
 }

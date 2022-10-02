@@ -1,16 +1,11 @@
-const fastify = require('fastify')
+const express = require('express')
+const app = express()
 
-const nodeEnv = process.env.NODE_ENV || 'development'
+app.get('/',(req,res) => {
+   res.json({status: 200, data: "hello ...."})
 
-const app = fastify({
-    logger: true
 })
 
-app.get('/', async () => {
-    return {
-        status: 'OK',
-        nodeEnv
-    }
+app.listen(3000, () => {
+   console,log('Start server at port 3000.')
 })
-
-app.listen(3000, '0.0.0.0')
