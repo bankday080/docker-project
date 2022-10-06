@@ -1,9 +1,9 @@
 var mqtt = require('mqtt');
-const MQTT_SERVER = "54.191.199.50";
+const MQTT_SERVER = "127.0.0.1";
 const MQTT_PORT = "1883";
 //if your server don't have username and password let blank.
-const MQTT_USER = "phusit"; 
-const MQTT_PASSWORD = "Password123";
+const MQTT_USER = "bank"; 
+const MQTT_PASSWORD = "password";
 const MQTT_SUB = ["server/#"]
 
 
