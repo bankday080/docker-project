@@ -4,7 +4,7 @@ const MQTT_PORT = "1883";
 //if your sercer dont have username and password let blank
 const MQTT_USER = "bank";
 const MQTT_PASSWORD = "password";
-const MQTT_SUB = ["client/mcu01"];
+const MQTT_SUB = ["client1/mcu01"];
 
 // conmect MQTT
 var client = mqtt.connect({
@@ -37,7 +37,7 @@ client.on('message', function (topic, message) {
 
 setInterval(() => {
   // Sender Message
-  client.publish("server/mcu01", 
+  client.publish("server1/mcu01", 
   `{
       "sensor": "kuy",
       "status": "80"
@@ -53,7 +53,7 @@ setInterval(() => {
   // sender Message
   // client.publish("receiver-01", "hello from sender-01");
   client.subscribe(
-    "client/mcu01",
+    "client1/mcu01",
     `hello from ${MQTT_USER}`,
     { qos: 0, retain: false },
     (error) => {
@@ -68,7 +68,7 @@ setInterval(() => {
   // sender Message
   // client.publish("receiver-01", "hello from sender-01");
   client.subscribe(
-    "client/mcu02",
+    "client1/mcu02",
     `hello from ${MQTT_USER}`,
     { qos: 0, retain: false },
     (error) => {
@@ -83,7 +83,7 @@ setInterval(() => {
     // sender Message
     // client.publish("receiver-01", "hello from sender-01");
     client.subscribe(
-      "client/mcu*",
+      "client1/mcu*",
       `hello from ${MQTT_USER}`,
       { qos: 0, retain: false },
       (error) => {
