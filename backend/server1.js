@@ -1,5 +1,6 @@
 // import { db } from "..firebase/";
 // import { uid } from "uid";
+// import chalk from "chalk";
 
 var firebase = require("firebase");
 
@@ -19,9 +20,15 @@ const firebaseConfig = {
 // const analytics = getAnalytics(app2);
 
 const express = require("express");
+// const chalk = require('chalk');
+const debug = require("debug")("app");
 const app = express();
 var bodyParser = require("body-parser");
 var mqtt = require("mqtt");
+// const { default: chalk } = require("chalk");
+// const port = 3000;
+
+// + chalk.red(" : "+port)
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -118,7 +125,7 @@ app.put("/setting/:sensor", (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log("Start server at port 3000.");
+  console.log("Start server at port 3000." );
 });
 
 function mqttClient() {

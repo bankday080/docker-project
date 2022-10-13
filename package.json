@@ -4,14 +4,18 @@
   "main": "reciver.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "type": "module",
     "start": "node server1.js",
     "dev": "nodemon backend/server1.js"
+
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.0",
+    "chalk": "^5.1.2",
+    "debug": "^4.3.4",
     "express": "^4.18.1",
     "fastify": "^4.6.0",
     "firebase": "^8.6.8",
