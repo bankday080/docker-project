@@ -1,5 +1,3 @@
-
-/*----------------------------------------part1----------------------------------------*/
 var admin = require("firebase-admin");
 
 var serviceAccount = require("./serviceAccountKEY.json");
@@ -11,12 +9,4 @@ admin.initializeApp({
 });
 
 const db = admin.firestore();
-
-
-delete documents
-db.collection("Cutomer").doc("0").delete().then(res => {
-    console.log("document deleted succrsffuly")
-});
-
-
 
