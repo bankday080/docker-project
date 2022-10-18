@@ -34,6 +34,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 var client = mqttClient();
 
+
 app.get("/", (req, res) => {
   if (firebase.apps.length == 0) {
     firebase.initializeApp(firebaseConfig);
@@ -67,7 +68,7 @@ app.get("/", (req, res) => {
   });
 });
 
-app.post("/setting/", (req, res) => {
+app.post("/setting/temp", (req, res) => {
   const data = JSON.stringify({
     sensor: req.body.sensor,
     status: req.body.status,
@@ -86,12 +87,13 @@ app.post("/setting/", (req, res) => {
   });
 });
 
-app.post("/setting/off", (req, res) => {
+app.post("/setting/humid", (req, res) => {
   const data = JSON.stringify({
     sensor: req.body.sensor,
     status: req.body.status,
   });
-  client.publish("client1/mcu02", data, { qos: 0, retain: false }, (error) => {
+  console.log("Ok001",req.body);
+  client.publish("client1/mcu02",data, { qos: 0, retain: false }, (error) => {
     if (error) {
       console.error(error);
     }
@@ -104,13 +106,21 @@ app.post("/setting/off", (req, res) => {
     debug: data,
   });
 });
+
+
+
 
 app.put("/setting/:sensor", (req, res) => {
   const data = JSON.stringify({
     sensor: req.params.sensor,
     status: req.body.status,
   });
-  client.publish("client1/mcu01", data, { qos: 0, retain: false }, (error) => {
+  client.publish("client1/mcu01",`{
+    
+      "sensor": "AA",
+      "status": "OOFF"
+  
+  }`, data, { qos: 0, retain: false }, (error) => {
     if (error) {
       console.error(error);
     }
@@ -124,12 +134,13 @@ app.put("/setting/:sensor", (req, res) => {
   });
 });
 
+
 app.listen(3000, () => {
   console.log("Start server at port 3000." );
 });
 
 function mqttClient() {
-  const MQTT_SERVER = "192.168.31.200";
+  const MQTT_SERVER = "192.168.1.30";
   const MQTT_PORT = "1883";
   //if your server don't have username and password let blank.
   const MQTT_USER = "bank";
@@ -170,7 +181,7 @@ function mqttClient() {
       var payload = JSON.parse(message.toString());
       console.log(payload);
 
-      database.ref("internal").set(payload, function (error) {
+      database.ref("internal/").set(payload, function (error) {
         if (error) {
           // The write failed...
           console.log("Failed with error: " + error);

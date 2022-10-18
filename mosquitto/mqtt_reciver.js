@@ -39,8 +39,8 @@ setInterval(() => {
   // Sender Message
   client.publish("server1/mcu01", 
   `{
-      "sensor": "kuy",
-      "status": "80"
+      "sensor": "A",
+      "status": "37.5"
   }`, { qos: 0, retain: false }, (error) => {
       if (error) {
         console.error(error)
