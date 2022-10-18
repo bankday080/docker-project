@@ -54,7 +54,7 @@ app.get("/", (req, res) => {
     sensor: req.body.sensor,
     status: req.body.status,
   });
-  client.publish("client1/mcu01", data, { qos: 0, retain: false }, (error) => {
+/*   client.publish("client1/mcu01", data, { qos: 0, retain: false }, (error) => {
     if (error) {
       console.error(error);
     }
@@ -65,7 +65,7 @@ app.get("/", (req, res) => {
     status: 200,
     data: "publish OK ...",
     debug: data,
-  });
+  }); */
 });
 
 app.post("/setting/temp", (req, res) => {
@@ -73,7 +73,8 @@ app.post("/setting/temp", (req, res) => {
     sensor: req.body.sensor,
     status: req.body.status,
   });
-  client.publish("client1/mcu01", data, { qos: 0, retain: false }, (error) => {
+  console.log("Ok001",req.body);
+  client.publish("client1/mcu01",data, { qos: 0, retain: false }, (error) => {
     if (error) {
       console.error(error);
     }
@@ -107,10 +108,69 @@ app.post("/setting/humid", (req, res) => {
   });
 });
 
+app.post("/setting/turn", (req, res) => {
+  const data = JSON.stringify({
+    sensor: req.body.sensor,
+    status: req.body.status,
+  });
+  console.log("Ok001",req.body);
+  client.publish("client1/mcu03",data, { qos: 0, retain: false }, (error) => {
+    if (error) {
+      console.error(error);
+    }
+  });
+
+  res.status(201);
+  res.json({
+    status: 200,
+    data: "publish OK ...",
+    debug: data,
+  });
+});
+
+app.post("/setting/start", (req, res) => {
+  const data = JSON.stringify({
+    sensor: req.body.sensor,
+    status: req.body.status,
+  });
+  console.log("Ok001",req.body);
+  client.publish("client1/mcu04",data, { qos: 0, retain: false }, (error) => {
+    if (error) {
+      console.error(error);
+    }
+  });
+
+  res.status(201);
+  res.json({
+    status: 200,
+    data: "publish OK ...",
+    debug: data,
+  });
+});
+
+app.post("/setting/number", (req, res) => {
+  const data = JSON.stringify({
+    sensor: req.body.sensor,
+    status: req.body.status,
+  });
+  console.log("Ok001",req.body);
+  client.publish("client1/mcu05",data, { qos: 0, retain: false }, (error) => {
+    if (error) {
+      console.error(error);
+    }
+  });
+
+  res.status(201);
+  res.json({
+    status: 200,
+    data: "publish OK ...",
+    debug: data,
+  });
+});
 
 
 
-app.put("/setting/:sensor", (req, res) => {
+/* app.put("/setting/:sensor", (req, res) => {
   const data = JSON.stringify({
     sensor: req.params.sensor,
     status: req.body.status,
@@ -132,7 +192,7 @@ app.put("/setting/:sensor", (req, res) => {
     data: "publish OK ...",
     debug: data,
   });
-});
+}); */
 
 
 app.listen(3000, () => {
@@ -140,7 +200,7 @@ app.listen(3000, () => {
 });
 
 function mqttClient() {
-  const MQTT_SERVER = "192.168.1.30";
+  const MQTT_SERVER = "192.168.31.200";
   const MQTT_PORT = "1883";
   //if your server don't have username and password let blank.
   const MQTT_USER = "bank";
