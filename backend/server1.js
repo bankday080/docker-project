@@ -1,19 +1,14 @@
-// import { db } from "..firebase/";
-// import { uid } from "uid";
-// import chalk from "chalk";
-
 var firebase = require("firebase");
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCXC7ox7q4tS3uvVzzkIc-xLO7MG2XoP_U",
-  authDomain: "egg-project-f7924.firebaseapp.com",
-  databaseURL:
-    "https://egg-project-f7924-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "egg-project-f7924",
-  storageBucket: "egg-project-f7924.appspot.com",
-  messagingSenderId: "463061130784",
-  appId: "1:463061130784:web:8fd0ac2054327566556645",
-  measurementId: "G-GV3S7LVRDR",
+  apiKey: "AIzaSyD_zTHNTeAlwzSEFe370QLMLKmuwslHTtg",
+  authDomain: "inclubator-7dcb5.firebaseapp.com",
+  databaseURL: "https://inclubator-7dcb5-default-rtdb.firebaseio.com",
+  projectId: "inclubator-7dcb5",
+  storageBucket: "inclubator-7dcb5.appspot.com",
+  messagingSenderId: "64537825910",
+  appId: "1:64537825910:web:df698cee4f1525eef34557",
+  measurementId: "G-RS2REGP3YX"
 };
 
 // const app2 = initializeApp(firebaseConfig);
@@ -254,6 +249,7 @@ function mqttClient() {
       console.log("External");
       var payload = JSON.parse(message.toString());
       console.log(payload);
+
       database.ref("external/").set(payload, function (error) {
         if (error) {
           // The write failed...

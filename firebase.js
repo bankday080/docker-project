@@ -10,3 +10,12 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
+//นำค่าจาก Databases มาแสดง
+let customersRef = db.collection("Data_Setting");
+
+customersRef.get().then((querySnapshot) =>{
+    querySnapshot.forEach(document => {
+        console.log(document.data());
+    })
+})
+

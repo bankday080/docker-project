@@ -1,5 +1,5 @@
 var mqtt = require('mqtt');
-const MQTT_SERVER = "127.0.0.1";
+const MQTT_SERVER = "192.168.31.200";
 const MQTT_PORT = "1883";
 //if your sercer dont have username and password let blank
 const MQTT_USER = "bank";
@@ -35,7 +35,7 @@ client.on('message', function (topic, message) {
 // client/mcu01,
 // client/mcu02,
 
-setInterval(() => {
+/* setInterval(() => {
   // Sender Message
   client.publish("server1/mcu01", 
   `{
@@ -47,7 +47,7 @@ setInterval(() => {
       }
   })
 
-}, 5000);
+}, 5000); */
 
 setInterval(() => {
   // sender Message
